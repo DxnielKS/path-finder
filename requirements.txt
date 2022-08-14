@@ -1,2 +1,2 @@
 pygame
-easygui
+easygui==0.97
