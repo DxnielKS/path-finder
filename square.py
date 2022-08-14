@@ -17,3 +17,5 @@ class Square():
         return self.wall
     def toggle_traversed(self):
         self.traversed=True
+    def traverse(self):
+        None
