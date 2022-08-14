@@ -1,5 +1,6 @@
 import pygame
 from square import Square
+from grid import Grid
 pygame.init()
 
 ##############################################################################################################
@@ -10,7 +11,7 @@ RED = (255,0,0)
 GREEN = (0,255,0)
 BLUE = (0,0,255)
 
-squares = []
+grid = Grid()
 square_thickness = 2
 square_size = 30
 
@@ -22,8 +23,7 @@ def draw_grid():
         for j in range(0, height, 30):
             # print(j)
             pygame.draw.rect(screen, BLACK, pygame.Rect(i, j, square_size, square_size),square_thickness)
-            squares.append(Square(square_size,i,j))
-    # print(squares)
+            grid.add(Square(square_size,i,j))
 
 ##############################################################################################################
 
