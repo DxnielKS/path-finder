@@ -17,7 +17,7 @@ square_size = 15
 
 ##############################################################################################################
 
-def draw_grid(): 
+def draw_grid():
     for i in range(0,width, square_size):
         # print(i)
         for j in range(0, height, square_size):
@@ -29,6 +29,7 @@ def draw_grid():
 
 width, height = pygame.display.Info().current_w, pygame.display.Info().current_h
 screen = pygame.display.set_mode((width//2,height//2))
+pygame.display.set_caption('Path Finder')
 screen.fill(WHITE)
 draw_grid()
 
