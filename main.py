@@ -1,8 +1,10 @@
 from settings import *
 from square import Square
-pygame.init()
+import tkinter
+import easygui
 
 ##############################################################################################################
+
 """
 
 Grid Functions
@@ -94,6 +96,11 @@ def main():
             elif pygame.mouse.get_pressed()[2]:
                 pos = pygame.mouse.get_pos()
                 print(pos)
+
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
+                    print("points and walls selected!")
+                    algorithm_choice = easygui.buttonbox('Which algorithm would you like to use?', 'Algorithm:', ('A*', 'Djikstra\'s', 'Greedy','DFS','BFS'))
         CLOCK.tick(FPS)
     pygame.quit()
 
