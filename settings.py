@@ -1,4 +1,4 @@
-from turtle import width
+# from turtle import width
 import pygame
 
 WIDTH = 800

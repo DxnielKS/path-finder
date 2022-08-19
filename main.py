@@ -1,6 +1,5 @@
 from settings import *
 from square import Square
-from grid import Grid
 pygame.init()
 
 ##############################################################################################################
@@ -20,7 +19,7 @@ def create_grid(rows,width):
             grid[i].append(square)
 
     return grid
-    
+
 def draw_grid(win,rows,width):
     gap = width//rows
     for i in range(rows):
@@ -41,14 +40,14 @@ def get_mouse_pos(pos,rows,width):
     gap = width // rows
     y,x = pos
     row = y//gap
-    col = x//gap 
-    
+    col = x//gap
+
     return row, col
 
 ################################################################################################################
 
 """
-Draw Function 
+Draw Function
 
 """
 def final_draw(win,grid,rows,width):
@@ -75,7 +74,7 @@ def Main():
     running = True
     startPos = None
     endPos = None
-    ROWS  = 50 
+    ROWS  = 50
     grid = create_grid(ROWS,WIDTH)
 
     while running:
@@ -99,11 +98,11 @@ def Main():
                 elif not endPos and node != startPos:
                     endPos = node
                     endPos.toggle_end()
-                
+
                 elif node != endPos and node != startPos:
                     node.make_wall()
 
-            elif pygame.mouse.get_pressed()[2]: 
+            elif pygame.mouse.get_pressed()[2]:
                 pos = pygame.mouse.get_pos
                 print(pos)
         #pygame.display.flip() # Flip the display
