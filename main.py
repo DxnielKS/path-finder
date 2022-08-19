@@ -52,7 +52,7 @@ Draw Function
 """
 def final_draw(win,grid,rows,width):
     win.fill(WHITE)
-    print("This is being called")
+    # print("This is being called")
 
     for row in grid:
         for spot in row:
@@ -68,9 +68,7 @@ def final_draw(win,grid,rows,width):
 Main loop of the program.
 """
 
-
-
-def Main():
+def main():
     running = True
     startPos = None
     endPos = None
@@ -106,7 +104,8 @@ def Main():
                 pos = pygame.mouse.get_pos
                 print(pos)
         #pygame.display.flip() # Flip the display
-
+        CLOCK.tick(FPS)
     pygame.quit()
 
-Main()
+if __name__ == "__main__":
+    main()
