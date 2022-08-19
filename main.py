@@ -17,7 +17,6 @@ def create_grid(rows,width):
         for j in range(rows):
             square = Square(grid_size,i,j,rows)
             grid[i].append(square)
-
     return grid
 
 def draw_grid(win,rows,width):
@@ -30,10 +29,7 @@ def draw_grid(win,rows,width):
 ##############################################################################################################
 
 """
-
 PROGRAM FUNCTIONALITY - THIS IS WHERE ALL THE ALGORITHMS ETC SHOULD GO - A* dsijisras breadth first etc.
-
-
 """
 
 def get_mouse_pos(pos,rows,width):
@@ -41,28 +37,25 @@ def get_mouse_pos(pos,rows,width):
     y,x = pos
     row = y//gap
     col = x//gap
-
     return row, col
 
-################################################################################################################
+##############################################################################################################
 
 """
 Draw Function
-
 """
+
 def final_draw(win,grid,rows,width):
     win.fill(WHITE)
-    # print("This is being called")
-
+    print("This is being called")
     for row in grid:
-        for spot in row:
-            spot.draw(win)
-            #print(spot.get_colour())
-
+        for square in row:
+            square.draw(win)
+            #print(square.get_colour())
     draw_grid(win,rows,width)
     pygame.display.update()
 
-###################################################################################################################
+##############################################################################################################
 
 """
 Main loop of the program.
@@ -72,9 +65,7 @@ def main():
     running = True
     startPos = None
     endPos = None
-    ROWS  = 50
     grid = create_grid(ROWS,WIDTH)
-
     while running:
         #print(startPos)
         final_draw(WIN, grid, ROWS, WIDTH)
@@ -89,21 +80,20 @@ def main():
                 node = grid[row][col]
                 print(node.get_colour())
 
-                if not startPos:
+                if not startPos: # if there is no start position
                     startPos = node
-                    startPos.toggle_start()
+                    startPos.toggle_start() # make this the start position
 
-                elif not endPos and node != startPos:
+                elif not endPos and node != startPos: # if there is no end position and the hovered node is not the start node
                     endPos = node
-                    endPos.toggle_end()
+                    endPos.toggle_end() # make this end position
 
-                elif node != endPos and node != startPos:
-                    node.make_wall()
+                elif node != endPos and node != startPos: # if the node is not the start or end position
+                    node.make_wall() # make this a wall that cannot be traversed
 
             elif pygame.mouse.get_pressed()[2]:
-                pos = pygame.mouse.get_pos
+                pos = pygame.mouse.get_pos()
                 print(pos)
-        #pygame.display.flip() # Flip the display
         CLOCK.tick(FPS)
     pygame.quit()
 
