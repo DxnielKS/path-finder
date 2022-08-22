@@ -10,9 +10,10 @@ class Square():
         self.x= row * size
         self.y= col * size
         self.total_rows = total_rows
-        #self.traversed = False
+        self.searched = False
         self.colour = WHITE
-        self.neighbours = []
+        # self.neighbours = []
+        self.is_wall = False
 
     def get_size(self):
         return self.size
@@ -31,16 +32,18 @@ class Square():
 
     #the node has been searched
     def is_searched(self):
-        return self.colour == RED
+        return self.is_searched == RED
 
     def make_searched(self):
         self.colour = RED
+        self.is_searched = True
 
     def is_wall(self):
-        return self.colour == BLACK
+        return self.is_wall
 
     def make_wall(self):
         self.colour = BLACK
+        self.is_wall = True
 
     #This will determine the start Node
     def toggle_start(self):

@@ -3,8 +3,6 @@ from square import Square
 import tkinter
 import easygui
 
-##############################################################################################################
-
 """
 
 Grid Functions
@@ -28,11 +26,38 @@ def draw_grid(win,rows,width):
         for j in range(rows):
             pygame.draw.line(win, GREY, (j*gap, 0), (j*gap, width))
 
-##############################################################################################################
 
 """
 PROGRAM FUNCTIONALITY - THIS IS WHERE ALL THE ALGORITHMS ETC SHOULD GO - A* dsijisras breadth first etc.
 """
+
+# [i+1][j+1]
+# [i+1][j-1]
+# [i-1][j+1]
+# [i-1][j-1]
+
+def BFS(grid,startPos,endPos):
+    queue = [startPos]
+    visted = [startPos]
+    path = None
+    print(startPos.get_pos())
+    while queue:
+        if queue[0] == endPos:
+            return
+        elif queue[0] in visted:
+            queue=queue[1:len(queue)]
+            continue
+
+        # if not grid[row_index+1][column_index+1].is_wall():
+        #     queue.append(grid[row_index+1][column_index+1])
+        # elif not grid[row_index+1][column_index-1].is_wall():
+        #     queue.append(grid[row_index+1][column_index-1])
+        # elif not grid[row_index-1][column_index+1].is_wall():
+        # elif not grid[row_index-1][column_index-1].is_wall():
+
+
+        # final_draw()
+
 
 def get_mouse_pos(pos,rows,width):
     gap = width // rows
@@ -40,8 +65,6 @@ def get_mouse_pos(pos,rows,width):
     row = y//gap
     col = x//gap
     return row, col
-
-##############################################################################################################
 
 """
 Draw Function
@@ -57,7 +80,6 @@ def final_draw(win,grid,rows,width):
     draw_grid(win,rows,width)
     pygame.display.update()
 
-##############################################################################################################
 
 """
 Main loop of the program.
@@ -100,7 +122,19 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     print("points and walls selected!")
-                    algorithm_choice = easygui.buttonbox('Which algorithm would you like to use?', 'Algorithm:', ('A*', 'Djikstra\'s', 'Greedy','DFS','BFS'))
+                    algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
+                    if algorithm_choice == 'A*':
+                        a_star()
+                    elif algorithm_choice == 'Djikstras':
+                        djikstra(grid,startPos,endPos)
+                    elif algorithm_choice == 'Greedy':
+                        greedy()
+                    elif algorithm_choice == 'DFS':
+                        DFS()
+                    elif algorithm_choice== 'BFS':
+                        # del startPos, endPos
+                        BFS(grid,startPos,endPos)
+
         CLOCK.tick(FPS)
     pygame.quit()
 
