@@ -18,4 +18,4 @@ ROWS  = WIDTH//15
 WIN = pygame.display.set_mode((WIDTH,WIDTH))
 pygame.display.set_caption("Path Finding Visualiser")
 CLOCK = pygame.time.Clock()
-FPS = 60
+FPS = 144
