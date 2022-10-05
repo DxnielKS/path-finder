@@ -1,3 +1,2 @@
 pygame
-tkinter
 easy_gui

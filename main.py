@@ -1,8 +1,8 @@
 from pickle import TRUE
 from settings import *
 from square import Square
-import tkinter
-import easygui
+# import tkinter
+# import easygui
 import sys
 sys.setrecursionlimit(10000)
 """
@@ -175,18 +175,19 @@ def main():
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     #print("points and walls selected!")
-                    algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
-                    if algorithm_choice == 'A*':
-                        a_star()
-                    elif algorithm_choice == 'Djikstras':
-                        djikstra(grid,startPos,endPos)
-                    elif algorithm_choice == 'Greedy':
-                        greedy()
-                    elif algorithm_choice == 'DFS':
-                        DFS(grid,startPos,endPos)
-                    elif algorithm_choice== 'BFS':
-                        # del startPos, endPos
-                        BFS(grid,startPos,endPos)
+                    BFS(grid,startPos,endPos)
+                    # algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
+                    # if algorithm_choice == 'A*':
+                    #     a_star()
+                    # elif algorithm_choice == 'Djikstras':
+                    #     djikstra(grid,startPos,endPos)
+                    # elif algorithm_choice == 'Greedy':
+                    #     greedy()
+                    # elif algorithm_choice == 'DFS':
+                    #     DFS(grid,startPos,endPos)
+                    # elif algorithm_choice== 'BFS':
+                    #     # del startPos, endPos
+                    #     BFS(grid,startPos,endPos)
 
         CLOCK.tick(FPS)
     pygame.quit()
