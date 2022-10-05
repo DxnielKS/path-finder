@@ -59,6 +59,29 @@ def displaySearching(currentNode, startPos,endPos):
             currentNode.toggle_finding()
         currentNode.draw(WIN)
         pygame.display.flip()
+
+def djikstra(grid,startPos,endPos):
+    print('Djikstr\'s is called')
+    listOfNodes: list = [startPos]
+    tracingBack = None
+    while listOfNodes:       
+        currentNode = listOfNodes[0]
+        listOfNodes.pop(0)
+        if hasBeenFound(currentNode, endPos):
+            tracingBack = currentNode
+            break
+        displaySearching(currentNode,startPos,endPos)
+        for neighbour in currentNode.assignNeighbours(grid):
+            if (neighbour.get_iswall() != True): # if the neighboring cell is not a wall
+                if  neighbour.get_is_visited() == False:
+                    neighbour.setCame_from(currentNode)
+                    neighbour.set_is_visited()
+                    listOfNodes.append(neighbour)
+    if(listOfNodes == []):
+        print("No solution found")
+        return
+    tracingBrack(tracingBack,startPos)
+
 def BFS(grid,startPos,endPos):
     print("BFS is called")
     listOfNodes: list = [startPos]
