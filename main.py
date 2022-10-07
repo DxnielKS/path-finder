@@ -50,7 +50,7 @@ def tracingBrack(tracingBack,startPos):
             pygame.display.flip()
 
 def hasBeenFound(currentNode, endPos):
-        return currentNode.get_pos() == endPos.get_pos():
+        return currentNode.get_pos() == endPos.get_pos()
 def displaySearching(currentNode, startPos,endPos):
         if(currentNode != startPos and currentNode != endPos):
             currentNode.toggle_finding()
