@@ -22,7 +22,7 @@ class Square():
     def get_is_visited(self):
         return self.is_visited
     def assignNeighbours(self,grid):
-        #print("Problem 50")
+        print("Problem 50")
         if (self.row == 0 and self.col == 47 ):
             self.neighbours.append(grid[self.row + 1][self.col])
             self.neighbours.append(grid[self.row][self.col - 1])
