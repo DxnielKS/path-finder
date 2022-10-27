@@ -5,10 +5,9 @@ from square import Square
 # import easygui
 import sys
 sys.setrecursionlimit(10000)
+
 """
-
 Grid Functions
-
 """
 
 def create_grid(rows,width):
@@ -20,14 +19,12 @@ def create_grid(rows,width):
             square = Square(grid_size,i,j,rows)
             grid[i].append(square)
     return grid
-
 def draw_grid(win,rows,width):
     gap = width//rows
     for i in range(rows):
         pygame.draw.line(win, GREY, (0,i*gap), (width, i*gap))
         for j in range(rows):
             pygame.draw.line(win, GREY, (j*gap, 0), (j*gap, width))
-
 
 """
 PROGRAM FUNCTIONALITY - THIS IS WHERE ALL THE ALGORITHMS ETC SHOULD GO - A* dsijisras breadth first etc.
@@ -48,7 +45,6 @@ def tracingBrack(tracingBack,startPos):
             tracingBack.toggle_rightPath()
             tracingBack.draw(WIN)
             pygame.display.flip()
-
 def hasBeenFound(currentNode, endPos):
         return currentNode.get_pos() == endPos.get_pos()
 def displaySearching(currentNode, startPos,endPos):
@@ -56,7 +52,6 @@ def displaySearching(currentNode, startPos,endPos):
             currentNode.toggle_finding()
         currentNode.draw(WIN)
         pygame.display.flip()
-
 def djikstra(grid,startPos,endPos):
     print('Djikstr\'s is called')
     listOfNodes: list = [startPos]
@@ -78,7 +73,6 @@ def djikstra(grid,startPos,endPos):
         print("No solution found")
         return
     tracingBrack(tracingBack,startPos)
-
 def BFS(grid,startPos,endPos):
     print("BFS is called")
     listOfNodes: list = [startPos]
@@ -123,7 +117,6 @@ def DFS(grid,startPos,endPos):
     else:
         print("No solution found")
         return
-
 def get_mouse_pos(pos,rows,width):
     gap = width // rows
     y,x = pos
@@ -144,7 +137,6 @@ def final_draw(win,grid,rows,width):
             #print(square.get_colour())
     draw_grid(win,rows,width)
     pygame.display.update()
-
 
 """
 Main loop of the program.
