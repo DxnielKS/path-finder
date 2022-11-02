@@ -14,6 +14,7 @@ class Square():
         self.searched = False
         self.colour = WHITE
         self.neighbours = []
+        self.neighbours_weighting = {}
         self.came_from = None
         self.is_wall = False
         self.is_visited = False
