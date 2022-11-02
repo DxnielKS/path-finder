@@ -75,7 +75,7 @@ def BFS(grid,startPos,endPos):
     print("BFS is called")
     listOfNodes: list = [startPos]
     tracingBack = None
-    while listOfNodes:       
+    while listOfNodes:    
         currentNode = listOfNodes[0]
         listOfNodes.pop(0)
         if hasBeenFound(currentNode, endPos):
@@ -88,6 +88,7 @@ def BFS(grid,startPos,endPos):
                     neighbour.setCame_from(currentNode)
                     neighbour.set_is_visited()
                     listOfNodes.append(neighbour)
+        CLOCK.tick(FPS)
     if(listOfNodes == []):
         print("No solution found")
         return

@@ -40,22 +40,61 @@ class Square():
             self.neighbours.append(grid[self.row][self.col - 1])
             self.neighbours.append(grid[self.row -1 ][self.col])
         elif(self.row == 0):
-            self.neighbours.append(grid[self.row][self.col + 1])
-            self.neighbours.append(grid[self.row][self.col - 1])
-            self.neighbours.append(grid[self.row + 1 ][self.col])
+            try:
+                self.neighbours.append(grid[self.row][self.col + 1])
+            except:
+                print("No cell to the left")
+            try:
+                self.neighbours.append(grid[self.row][self.col - 1])
+            except:
+                print("No cell to the left")
+            try:
+                self.neighbours.append(grid[self.row + 1 ][self.col])
+            except:
+                print("No cell to the left")
         elif (self.col == 47):
-            self.neighbours.append(grid[self.row - 1][self.col])
-            self.neighbours.append(grid[self.row + 1][self.col])
-            self.neighbours.append(grid[self.row ][self.col - 1])
+            try:
+                self.neighbours.append(grid[self.row - 1][self.col])
+            except:
+                print("No cell to the left")
+            try:
+                self.neighbours.append(grid[self.row + 1][self.col])
+            except:
+                print("No cell to the left")
+            try:
+                self.neighbours.append(grid[self.row ][self.col - 1])
+            except:
+                print("No cell to the left")
         elif (self.col == 0):
-            self.neighbours.append(grid[self.row - 1][self.col])
-            self.neighbours.append(grid[self.row + 1][self.col])
-            self.neighbours.append(grid[self.row ][self.col + 1])
+            try:
+                self.neighbours.append(grid[self.row - 1][self.col])
+            except:
+                pass
+            try:
+                self.neighbours.append(grid[self.row + 1][self.col])
+            except:
+                pass
+            try: 
+                self.neighbours.append(grid[self.row ][self.col + 1])
+            except:
+                pass
         else:
-            self.neighbours.append(grid[self.row - 1][self.col])
-            self.neighbours.append(grid[self.row + 1][self.col])
-            self.neighbours.append(grid[self.row ][self.col + 1])
-            self.neighbours.append(grid[self.row ][self.col - 1])
+            try:
+                self.neighbours.append(grid[self.row - 1][self.col])
+            except:
+                print("No cell above!")
+            try:
+                self.neighbours.append(grid[self.row + 1][self.col])
+            except:
+                print("No cell below!")
+            try:
+                self.neighbours.append(grid[self.row ][self.col + 1])
+            except:
+                print("No cell to the right!")
+            try:
+                self.neighbours.append(grid[self.row ][self.col - 1])
+            except:
+                print("No cell to the left!")
         return self.neighbours
 
 
