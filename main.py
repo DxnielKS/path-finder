@@ -1,11 +1,9 @@
 from pickle import TRUE
 from settings import *
 from square import Square
+import sys
 # import tkinter
 # import easygui
-import sys
-sys.setrecursionlimit(10000)
-
 """
 Grid Functions
 """
@@ -144,7 +142,7 @@ Main loop of the program.
 
 def main():
     #print("Rows is ")
-   #print(ROWS)
+    #print(ROWS)
     #print("Width is ")
     #print(WIDTH)
     running = True
@@ -205,4 +203,5 @@ def main():
     pygame.quit()
 
 if __name__ == "__main__":
+    sys.setrecursionlimit(10000)
     main()
