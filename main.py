@@ -54,19 +54,19 @@ def djikstra(grid,startPos,endPos):
     print('Djikstr\'s is called')
     listOfNodes: list = [startPos]
     tracingBack = None
-    while listOfNodes:       
-        currentNode = listOfNodes[0]
-        listOfNodes.pop(0)
+    while listOfNodes:    
+        currentNode = listOfNodes.pop(0)
         if hasBeenFound(currentNode, endPos):
             tracingBack = currentNode
             break
         displaySearching(currentNode,startPos,endPos)
         for neighbour in currentNode.assignNeighbours(grid):
-            if (neighbour.get_iswall() != True): # if the neighboring cell is not a wall
+            if (neighbour.get_iswall() != True):
                 if  neighbour.get_is_visited() == False:
                     neighbour.setCame_from(currentNode)
                     neighbour.set_is_visited()
                     listOfNodes.append(neighbour)
+        CLOCK.tick(FPS)
     if(listOfNodes == []):
         print("No solution found")
         return
@@ -76,8 +76,7 @@ def BFS(grid,startPos,endPos):
     listOfNodes: list = [startPos]
     tracingBack = None
     while listOfNodes:    
-        currentNode = listOfNodes[0]
-        listOfNodes.pop(0)
+        currentNode = listOfNodes.pop(0)
         if hasBeenFound(currentNode, endPos):
             tracingBack = currentNode
             break
