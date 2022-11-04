@@ -202,7 +202,7 @@ def main():
                     endPos.toggle_end() # make this end position
 
                 elif node != endPos and node != startPos: # if the node is not the start or end position
-                    grid[row][col].make_wall() # make this a wall that cannot be traversed
+                    grid[row][col].toggle_wall() # make this a wall that cannot be traversed
 
             elif pygame.mouse.get_pressed()[2]:
                 pos = pygame.mouse.get_pos()

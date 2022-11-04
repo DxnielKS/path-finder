@@ -133,9 +133,13 @@ class Square():
     def get_iswall(self):
         return self.is_wall
 
-    def make_wall(self):
-        self.colour = BLACK
-        self.is_wall = True
+    def toggle_wall(self):
+        print("toggling wall")
+        if self.get_iswall():
+            self.colour = WHITE
+        else:
+            self.colour = BLACK
+        self.is_wall = not self.get_iswall()
 
     #This will determine the start Node
     def toggle_start(self):
