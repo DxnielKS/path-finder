@@ -32,6 +32,13 @@ PROGRAM FUNCTIONALITY - THIS IS WHERE ALL THE ALGORITHMS ETC SHOULD GO - A* dsij
 # [i+1][j-1]
 # [i-1][j+1]
 # [i-1][j-1]
+
+#The heuristic that will be used for A* using manhattan distance
+def heuristic(pos1,pos2):
+    x1, y1 = pos1
+    x2, y2 = pos2
+    return abs(x1 - x2) + abs(y1 - y2)
+
 def tracingBrack(tracingBack,startPos):
     while tracingBack != None and tracingBack != startPos:
         #print("This tracing works")
@@ -50,6 +57,29 @@ def displaySearching(currentNode, startPos,endPos):
             currentNode.toggle_finding()
         currentNode.draw(WIN)
         pygame.display.flip()
+def a_star(grid,startPos,endPos):
+    print('A* is called')
+    listOfNodes: list = [(startPos,heuristic(startPos.get_pos(),endPos.get_pos()))]
+    tracingBack = None
+    while listOfNodes:    
+        currentNode = listOfNodes.pop(0)
+        if hasBeenFound(currentNode[0], endPos):
+            tracingBack = currentNode[0]
+            break
+        displaySearching(currentNode[0],startPos,endPos)
+        for neighbour in currentNode[0].assignNeighbours(grid):
+            if (neighbour.get_iswall() != True and not neighbour.get_is_visited()):
+                neighbour.setCame_from(currentNode[0])
+                neighbour.set_is_visited()
+                listOfNodes.append((neighbour,heuristic(neighbour.get_pos(),endPos.get_pos())))
+                listOfNodes.sort(key=lambda a: a[1])
+        CLOCK.tick(FPS)
+    if(listOfNodes == []):
+        print("No solution found")
+        return
+    tracingBrack(tracingBack,startPos)
+        
+
 def djikstra(grid,startPos,endPos):
     print('Djikstr\'s is called')
     listOfNodes: list = [startPos]
@@ -185,7 +215,7 @@ def main():
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     #print("points and walls selected!")
-                    BFS(grid,startPos,endPos)
+                    a_star(grid,startPos,endPos)
                     # algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
                     # if algorithm_choice == 'A*':
                     #     a_star()
