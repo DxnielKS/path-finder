@@ -37,7 +37,7 @@ PROGRAM FUNCTIONALITY - THIS IS WHERE ALL THE ALGORITHMS ETC SHOULD GO - A* dsij
 def heuristic(pos1,pos2):
     x1, y1 = pos1
     x2, y2 = pos2
-    return abs(x1 - x2) + abs(y1 - y2)
+    return (x1 - x2)**2 + (y1 - y2)**2
 
 def tracingBrack(tracingBack,startPos):
     while tracingBack != None and tracingBack != startPos:
@@ -140,6 +140,7 @@ def DFS(grid,startPos,endPos):
                     neighbour.setCame_from(currentNode)
                     neighbour.set_is_visited()
                     listOfNodes.insert(0,neighbour)
+        CLOCK.tick(FPS)
     if(tracingBack == endPos):
         tracingBrack(tracingBack,startPos)
     else:
@@ -214,7 +215,9 @@ def main():
                     endPos = None
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
-                    #print("points and walls selected!")
+                    print("points and walls selected!")
+                    # a_star(grid,startPos,endPos)
+                    # DFS(grid,startPos,endPos)
                     a_star(grid,startPos,endPos)
                     # algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
                     # if algorithm_choice == 'A*':
