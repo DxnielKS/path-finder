@@ -216,9 +216,8 @@ def main():
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     print("points and walls selected!")
-                    # a_star(grid,startPos,endPos)
-                    # DFS(grid,startPos,endPos)
                     a_star(grid,startPos,endPos)
+                    # DFS(grid,startPos,endPos)
                     # algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
                     # if algorithm_choice == 'A*':
                     #     a_star()
