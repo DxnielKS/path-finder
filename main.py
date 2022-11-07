@@ -2,8 +2,8 @@ from pickle import TRUE
 from settings import *
 from square import Square
 import sys
-# import tkinter
-# import easygui
+import tkinter
+
 """
 Grid Functions
 """
