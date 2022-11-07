@@ -2,7 +2,7 @@ from pickle import TRUE
 from settings import *
 from square import Square
 import sys
-import tkinter
+import tkinter as tk
 
 """
 Grid Functions
@@ -216,21 +216,41 @@ def main():
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     print("points and walls selected!")
-                    a_star(grid,startPos,endPos)
-                    # DFS(grid,startPos,endPos)
-                    # algorithm_choice = easygui.buttonbox('Choose an algorithm', 'Which algorithm would you like to use?', ('A*', 'Djikstras', 'Greedy','DFS','BFS'))
-                    # if algorithm_choice == 'A*':
-                    #     a_star()
-                    # elif algorithm_choice == 'Djikstras':
-                    #     djikstra(grid,startPos,endPos)
-                    # elif algorithm_choice == 'Greedy':
-                    #     greedy()
-                    # elif algorithm_choice == 'DFS':
-                    #     DFS(grid,startPos,endPos)
-                    # elif algorithm_choice== 'BFS':
-                    #     # del startPos, endPos
-                    #     BFS(grid,startPos,endPos)
-
+                    window=tk.Tk()
+                    window.mainloop()
+                    # button1 = tk.Button(
+                    #     text="A*",
+                    #     width=25,
+                    #     height=5,
+                    #     bg="blue",
+                    #     fg="yellow",
+                    # )
+                    # button2 = tk.Button(
+                    #     text="Djikstra's",
+                    #     width=25,
+                    #     height=5,
+                    #     bg="blue",
+                    #     fg="yellow",
+                    # )
+                    # button3 = tk.Button(
+                    #     text="DFS",
+                    #     width=25,
+                    #     height=5,
+                    #     bg="blue",
+                    #     fg="yellow",
+                    # )
+                    # button4 = tk.Button(
+                    #     text="BFS",
+                    #     width=25,
+                    #     height=5,
+                    #     bg="blue",
+                    #     fg="yellow",
+                    # )
+                    # button1.pack()
+                    # button2.pack()
+                    # button3.pack()
+                    # button4.pack()
+                    # window.mainloop()
         CLOCK.tick(FPS)
     pygame.quit()
 
