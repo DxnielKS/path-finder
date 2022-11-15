@@ -216,8 +216,17 @@ def main():
                     grid = create_grid(ROWS,WIDTH)
                 elif event.key == pygame.K_SPACE and endPos and startPos: # if the spacebar is pressed and there is a start position and end position
                     print("points and walls selected!")
-                    window=tk.Tk()
-                    window.mainloop()
+                    choice = input("Which algorithm would you like to use?\nBFS\nDFS\nDjikstra's\nA*\n")
+                    choice=choice.upper()
+                    choice_dict={"BFS":"BFS(grid,startPos,endPos)","DFS":"DFS(grid,startPos,endPos)","DJIKSTRA":"djikstra(grid,startPos,endPos)","A*":"a_star(grid,startPos,endPos)"}
+                    while choice not in choice_dict:
+                        print("Invalid input")
+                        choice = input("Which algorithm would you like to use?\nBFS\nDFS\nDjikstra's\nA*\n")
+                        choice=choice.upper()
+                    algorithm=choice_dict[choice]
+                    eval(algorithm)
+                    # window=tk.Tk()
+                    # window.mainloop()
                     # button1 = tk.Button(
                     #     text="A*",
                     #     width=25,
