@@ -2,7 +2,7 @@ from pickle import TRUE
 from settings import *
 from square import Square
 import sys
-import tkinter as tk
+#import tkinter as tk
 
 """
 Grid Functions
