@@ -3,6 +3,7 @@ from string import whitespace
 from tokenize import Whitespace
 from settings import *
 
+# This is the class to define each square in the grid and find its neighbouring squares
 class Square():
     def __init__(self,size,row,col,total_rows):
         self.size=size
